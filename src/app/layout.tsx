@@ -34,6 +34,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
+        style={{
+          background:
+            "radial-gradient(52.52% 32.71% at 50% 97.66%, rgba(36, 160, 181, 0.2) 0%, rgba(36, 160, 181, 0) 100%), #02191D",
+        }}
         className={`${roboto.variable} ${roadRage.variable} ${jeju.variable} font-roboto antialiased`}
       >
         {children}
