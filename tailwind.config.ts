@@ -8,9 +8,10 @@ export default {
   ],
   theme: {
     extend: {
-      colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+      fontFamily: {
+        roboto: ["var(--font-roboto)"],
+        road: ["var(--font-road-rage)"],
+        jeju: ["var(--font-jeju)"],
       },
     },
   },

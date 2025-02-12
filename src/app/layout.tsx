@@ -1,6 +1,13 @@
 import type { Metadata } from "next";
 import { Roboto, Road_Rage } from "next/font/google";
 import "./globals.css";
+import localFont from "next/font/local";
+
+const jeju = localFont({
+  src: "./JejuMyeongjo-Regular.ttf",
+  display: "swap",
+  variable: "--font-jeju",
+});
 
 const roboto = Roboto({
   variable: "--font-roboto",
@@ -26,7 +33,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${roboto.variable} ${roadRage.variable} antialiased`}>
+      <body
+        className={`${roboto.variable} ${roadRage.variable} ${jeju.variable} antialiased`}
+      >
         {children}
       </body>
     </html>
