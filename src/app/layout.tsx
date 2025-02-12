@@ -34,7 +34,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${roboto.variable} ${roadRage.variable} ${jeju.variable} antialiased`}
+        className={`${roboto.variable} ${roadRage.variable} ${jeju.variable} font-roboto antialiased`}
       >
         {children}
       </body>
