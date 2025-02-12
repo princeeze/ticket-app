@@ -28,7 +28,7 @@ export function Navbar() {
         </div>
         <Button
           variant="outline"
-          className="text-[#0A0C11] hover font-jeju rounded-xl px-4 py-6"
+          className="text-[#0A0C11] hover font-jeju rounded-xl px-4 py-5"
           asChild
         >
           <Link href="/my-tickets">MY TICKETS →</Link>

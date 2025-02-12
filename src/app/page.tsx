@@ -13,7 +13,7 @@ export default function Page() {
       <div>
         <Navbar />
         <main className="container mx-auto px-4 py-8">
-          {/* <TicketSelection /> */}
+          <TicketSelection />
         </main>
       </div>
     </div>
