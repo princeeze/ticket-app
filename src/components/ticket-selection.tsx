@@ -4,10 +4,11 @@ import { useState, useEffect } from "react";
 import { useForm, FormProvider } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@/components/ui/button";
-import { PersonalInfo } from "./personal-info";
+import { PersonalInfo } from "@/components/personal-info";
 import { Progress } from "@/components/ui/progress";
 import { TicketTypeSelection } from "@/components/ticket-type-selection";
 import { formSchema, type FormData } from "@/lib/schema";
+import { AttendeeDetails } from "./attendeedetails";
 
 const STORAGE_KEY = "ticketFormData";
 
@@ -21,6 +22,8 @@ export function TicketSelection() {
       quantity: "1",
       name: "",
       email: "",
+      specialRequest: "",
+      profilePhotoUrl: "",
     },
   });
 
@@ -66,7 +69,7 @@ export function TicketSelection() {
         <div className="relative space-y-3 pb-8">
           <div className="flex items-center justify-between">
             <h1 className="font-jeju text-3xl font-light text-white">
-              {currentStep === 1 ? "Ticket Selection" : "Personal Information"}
+              {currentStep === 1 ? "Ticket Selection" : "Attendee Details"}
             </h1>
             <span className="text-sm text-gray-400">Step {currentStep}/3</span>
           </div>
@@ -74,30 +77,9 @@ export function TicketSelection() {
         </div>
 
         <div className="rounded-[32px] border border-[#0E464F] bg-[#08252B] p-6">
-          <div
-            className="rounded-3xl border border-[#07373F] border-[0px_2px_2px_2px] p-6 backdrop-blur-[7px]"
-            style={{
-              background:
-                "radial-gradient(103.64% 57.39% at 14.02% 32.06%, rgba(36, 160, 181, 0.2) 0%, rgba(36, 160, 181, 0) 100%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */, rgba(10, 12, 17, 0.1)",
-            }}
-          >
-            <h2 className="text-center font-road text-6xl text-[#fafafa]">
-              Techember Fest &apos;25
-            </h2>
-            <p className="mx-auto mt-3 max-w-72 text-center text-[#fafafa]">
-              Join us for an unforgettable experience at [Event Name]! Secure
-              your spot now.
-            </p>
-            <div className="mt-4 flex items-center justify-center gap-2 text-[#fafafa]">
-              <span>📍 [Event Location]</span>
-              <span className="mx-2">||</span>
-              <span>March 15, 2025 | 7:00 PM</span>
-            </div>
-          </div>
-
-          <TicketTypeSelection />
-
-          {/* {currentStep === 1 ? <TicketTypeSelection /> : <PersonalInfo />} */}
+          {currentStep === 1 && <TicketTypeSelection />}
+          {currentStep === 2 && <AttendeeDetails />}
+          {currentStep === 3 && <PersonalInfo />}
 
           <div className="mt-8 flex items-center justify-between gap-4">
             {currentStep === 1 ? (
