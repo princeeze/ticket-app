@@ -9,10 +9,12 @@ import { Progress } from "@/components/ui/progress";
 import { TicketTypeSelection } from "@/components/ticket-type-selection";
 import { formSchema, type FormData } from "@/lib/schema";
 import { AttendeeDetails } from "./attendeedetails";
+import { useRouter } from "next/navigation";
 
 const STORAGE_KEY = "ticketFormData";
 
 export function TicketSelection() {
+  const router = useRouter();
   const [currentStep, setCurrentStep] = useState(1);
 
   const methods = useForm<FormData>({
@@ -27,7 +29,7 @@ export function TicketSelection() {
     },
   });
 
-  const { handleSubmit, watch, setValue } = methods;
+  const { handleSubmit, watch, setValue, setError } = methods;
 
   useEffect(() => {
     const storedData = localStorage.getItem(STORAGE_KEY);
@@ -47,13 +49,27 @@ export function TicketSelection() {
   }, [watch]);
 
   const onSubmit = (data: FormData) => {
-    console.log(data);
-    // Here you would typically send the data to your backend
-    alert("Form submitted successfully!");
+    if (!data.profilePhotoUrl) {
+      alert("Please add a profile picture");
+      return;
+    }
+    router.push("/ticket");
   };
 
   const handleNext = () => {
-    setCurrentStep(currentStep + 1);
+    const ticketType = watch("ticketType");
+    if (currentStep === 1) {
+      if (!ticketType) {
+        setError("ticketType", {
+          type: "required",
+          message: "Please select a ticket type",
+        });
+        return;
+      }
+    }
+    setTimeout(() => {
+      setCurrentStep(currentStep + 1);
+    }, 100);
   };
 
   const handleBack = () => {
@@ -104,16 +120,16 @@ export function TicketSelection() {
                 <Button
                   type="button"
                   variant="outline"
-                  className="w-full py-5 text-[#26B5C0]"
+                  className="w-full border-[#24A0B5] bg-transparent py-5 text-[#26B5C0] hover:bg-[#24A0B5]/5 hover:text-[#24A0B5]"
                   onClick={handleBack}
                 >
                   Back
                 </Button>
                 <Button
                   type="submit"
-                  className="w-full bg-[#26B5C0] py-5 text-white hover:bg-[#26B5C0]/90"
+                  className="w-full border border-[#24A0B5] bg-[#24A0B5] py-5 text-white hover:bg-[#24A0B5]/70"
                 >
-                  Complete Purchase
+                  Get My Free Ticket
                 </Button>
               </>
             )}
