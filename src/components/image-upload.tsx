@@ -55,19 +55,39 @@ export function ImageUpload() {
       >
         <input {...getInputProps()} />
         {profilePhotoUrl ? (
-          <Image
-            src={profilePhotoUrl}
-            width={208}
-            height={208}
-            alt="Profile"
-            className="h-full w-full"
-          />
+          <div className="relative">
+            <Image
+              src={profilePhotoUrl}
+              width={208}
+              height={208}
+              alt="Profile"
+              className="h-full w-full"
+            />
+            <div className="absolute top-0 flex h-full w-full flex-col items-center justify-center bg-black/40 text-center opacity-0 transition-opacity hover:opacity-100">
+              <Image
+                src={download}
+                alt="Download Icon"
+                className={`mx-auto h-8 w-8 text-[#FAFAFA] ${
+                  uploading ? "animate-bounce" : ""
+                }`}
+              />
+              <p className="mt-3 font-light text-[#FAFAFA]">
+                {uploading
+                  ? "Uploading..."
+                  : isDragActive
+                    ? "Drop"
+                    : "Drag & drop or click to upload"}
+              </p>
+            </div>
+          </div>
         ) : (
           <div className="text-center">
             <Image
               src={download}
               alt="Download Icon"
-              className="mx-auto h-8 w-8 text-[#FAFAFA]"
+              className={`mx-auto h-8 w-8 text-[#FAFAFA] ${
+                uploading ? "animate-bounce" : ""
+              }`}
             />
             <p className="mt-3 font-light text-[#FAFAFA]">
               {uploading
