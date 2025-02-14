@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Roboto, Road_Rage } from "next/font/google";
 import "./globals.css";
 import localFont from "next/font/local";
+import { Navbar } from "@/components/navbar";
 
 const jeju = localFont({
   src: "./JejuMyeongjo-Regular.ttf",
@@ -40,7 +41,12 @@ export default function RootLayout({
         }}
         className={`${roboto.variable} ${roadRage.variable} ${jeju.variable} font-roboto antialiased`}
       >
-        {children}
+        <div className="min-h-screen px-4 pt-8">
+          <div>
+            <Navbar />
+            {children}
+          </div>
+        </div>
       </body>
     </html>
   );
