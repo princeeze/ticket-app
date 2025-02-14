@@ -33,7 +33,7 @@ export function PersonalInfo() {
   console.log(values);
 
   return (
-    <div className="mx-auto max-w-[700px] space-y-20 rounded-[40px] border border-[#0E464F] bg-[#041E23] p-12 py-24">
+    <div className="mx-auto max-w-[700px] space-y-10 rounded-[40px] border border-[#0E464F] bg-[#041E23] p-4 py-12 sm:p-12 sm:py-24 md:space-y-20">
       <div className="space-y-2 text-center">
         <h3 className="text-3xl font-bold text-white">
           Your Ticket is Booked!
@@ -43,8 +43,8 @@ export function PersonalInfo() {
         </p>
       </div>
       <div className="relative flex w-full items-center justify-center">
-        <Image src={ticketbg} alt="Ticket" />
-        <div className="absolute left-1/2 top-1 -translate-x-1/2 p-4">
+        <Image src={ticketbg} alt="Ticket" className="min-w-[300px]" />
+        <div className="absolute left-1/2 top-1 w-[260px] -translate-x-1/2 p-4">
           <div className="flex flex-col gap-4 rounded-2xl border border-[#24A0B5] p-3">
             <div>
               <h2 className="text-center font-road text-4xl text-[#fafafa]">

@@ -41,7 +41,7 @@ export default function RootLayout({
         }}
         className={`${roboto.variable} ${roadRage.variable} ${jeju.variable} font-roboto antialiased`}
       >
-        <div className="min-h-screen px-4 pt-8">
+        <div className="min-h-screen px-2 pt-8 sm:px-4">
           <div>
             <Navbar />
             {children}
