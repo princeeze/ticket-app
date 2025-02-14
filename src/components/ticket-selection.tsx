@@ -80,11 +80,11 @@ export function TicketSelection() {
     <FormProvider {...methods}>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="mx-auto max-w-[700px] rounded-[40px] border border-[#0E464F] bg-[#041E23] p-12"
+        className="mx-auto max-w-[700px] rounded-[40px] border border-[#0E464F] bg-[#041E23] p-8 max-[500px]:p-6 sm:p-12"
       >
         <div className="relative space-y-3 pb-8">
           <div className="flex items-center justify-between">
-            <h1 className="font-jeju text-3xl font-light text-white">
+            <h1 className="font-jeju text-2xl font-light text-white sm:text-3xl">
               {currentStep === 1 ? "Ticket Selection" : "Attendee Details"}
             </h1>
             <span className="text-sm text-gray-400">Step {currentStep}/3</span>
@@ -92,7 +92,7 @@ export function TicketSelection() {
           <Progress value={currentStep * 33} className="h-1 bg-[#0E464F]" />
         </div>
 
-        <div className="rounded-[32px] border border-[#0E464F] bg-[#08252B] p-6">
+        <div className="rounded-[32px] border border-[#0E464F] bg-[#08252B] p-4 sm:p-6">
           {currentStep === 1 && <TicketTypeSelection />}
           {currentStep === 2 && <AttendeeDetails />}
           {currentStep === 3 && <PersonalInfo />}

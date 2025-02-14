@@ -42,13 +42,13 @@ export function TicketTypeSelection() {
   return (
     <div className="mt-8 space-y-8">
       <div
-        className="rounded-3xl border border-[#07373F] border-[0px_2px_2px_2px] p-6 backdrop-blur-[7px]"
+        className="rounded-3xl border border-[#07373F] border-[0px_2px_2px_2px] p-4 backdrop-blur-[7px] sm:p-6"
         style={{
           background:
             "radial-gradient(103.64% 57.39% at 14.02% 32.06%, rgba(36, 160, 181, 0.2) 0%, rgba(36, 160, 181, 0) 100%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */, rgba(10, 12, 17, 0.1)",
         }}
       >
-        <h2 className="text-center font-road text-6xl text-[#fafafa]">
+        <h2 className="text-center font-road text-5xl text-[#fafafa] sm:text-6xl">
           Techember Fest &apos;25
         </h2>
         <p className="mx-auto mt-3 max-w-72 text-center text-[#fafafa]">
@@ -70,7 +70,7 @@ export function TicketTypeSelection() {
           name="ticketType"
           render={({ field }) => (
             <FormItem>
-              <div className="grid grid-cols-3 gap-4 rounded-3xl border border-[#07373F] bg-[#052228] p-4">
+              <div className="grid grid-cols-1 gap-4 rounded-3xl border border-[#07373F] bg-[#052228] p-4 sm:grid-cols-3">
                 {ticketOptions.map((ticket) => (
                   <button
                     key={ticket.type}
